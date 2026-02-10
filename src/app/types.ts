@@ -1,19 +1,5 @@
 import { z } from "zod";
 
-// Define the allowed moderation categories only once
-export const MODERATION_CATEGORIES = [
-  "OFFENSIVE",
-  "OFF_BRAND",
-  "VIOLENCE",
-  "NONE",
-] as const;
-
-// Derive the union type for ModerationCategory from the array
-export type ModerationCategory = (typeof MODERATION_CATEGORIES)[number];
-
-// Create a Zod enum based on the same array
-export const ModerationCategoryZod = z.enum([...MODERATION_CATEGORIES]);
-
 export type SessionStatus = "DISCONNECTED" | "CONNECTING" | "CONNECTED";
 
 export interface ToolParameterProperty {
@@ -60,7 +46,7 @@ export type AllAgentConfigsType = Record<string, AgentConfig[]>;
 
 export interface GuardrailResultType {
   status: "IN_PROGRESS" | "DONE";
-  testText?: string; 
+  testText?: string;
   category?: ModerationCategory;
   rationale?: string;
 }

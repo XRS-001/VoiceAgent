@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
+import fs from 'fs'
+import path from 'path'
 
+const filePath = path.join(process.cwd(), "API_KEY.txt");
+
+const API_KEY = fs.readFileSync(filePath).toString().trim();
 export async function GET() {
   try {
     const response = await fetch(
@@ -7,7 +12,7 @@ export async function GET() {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

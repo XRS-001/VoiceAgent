@@ -13,10 +13,28 @@
     --foreground: #ededed;
   }
 }
-
+#close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background: black;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-app-region: no-drag; /* make button clickable */
+  border-radius: 3px;
+}
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  -webkit-app-region: drag;
+}
+button, input, a {
+  -webkit-app-region: no-drag; /* interactive elements stay clickable */
 }
